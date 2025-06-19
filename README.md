@@ -30,6 +30,7 @@ We’ll use:
 - JavaScript (Node.js)
 - JSON for message structure
 - Zod for schema validation
+- OpenAI’s GPT-4 for planning
 - Simple local mocks for tools and memory
 
 ## 🧩 Structure
@@ -38,11 +39,14 @@ We’ll use:
   - `index.js` — Entry point for the workshop
   - `messages/` — Simulated message handling and agent logic
   - `tools/` — Mock external tools (e.g., calculator, time, dice, registry)
+  - `llm/` — Planner that queries OpenAI to select a tool and input
   - `memory/` — Contextual storage/retrieval (TBD)
   - `schemas/` — Definitions for message formats (TBD)
   - `tracing/` — Logs structured tool usage to simulate MCP-style traceability
 - `scripts/`
   - `listTools.js` — Lists available tool cards
+  - `testPlanner.js` — Interactively test LLM tool planning via CLI
+- `.env` — Holds your `OPENAI_API_KEY`
 - `README.md` — This file
 
 ## 🏁 How to Start
@@ -58,9 +62,19 @@ To list available tools:
 npm run tools
 ```
 
-## 📌 Next Step
+To test LLM tool planning:
 
-Wrap up the core loop and explore dynamic planning, tool metadata expansion, or agent memory.
+```bash
+npm run plan
+```
+
+## 📌 v2 In Progress
+
+We’ve begun layering in OpenAI-driven planning to replace regex matching:
+
+- Fallback to GPT-4 when no match is found
+- Tool planning happens via `planTool()` in `src/llm`
+- Tool cards still handle validation and execution
 
 ---
 
@@ -82,6 +96,8 @@ Wrap up the core loop and explore dynamic planning, tool metadata expansion, or 
 - ✔️ Converted all tools into full MCP-style tool cards with metadata and schema definitions
 - ✔️ Created `scripts/listTools.js` and CLI command `npm run tools` to list all available tools
 - ✔️ Installed and integrated `zod` to define and enforce `inputSchema` and `outputSchema` in each tool
-- ✔️ Updated `handleMessage()` to validate tool inputs and outputs with Zod
+- ✔️ Added `planTool()` using OpenAI’s GPT-4 to determine tool + input from natural language
+- ✔️ Created CLI test runner for the planner with `npm run plan`
+- ✔️ Integrated `planTool()` into `handleMessage()` for fallback logic
 
-Next up: Expand planning logic, build agent memory, or add docs auto-generation
+Next up: Consider finalizing `v2.0.0`, adding memory, or supporting multi-tool planning

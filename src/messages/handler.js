@@ -2,6 +2,7 @@
 
 import { toolRegistry } from '../tools/registry.js'
 import { logToolUse } from '../tracing/trace.js'
+import { planTool } from '../llm/planTool.js'
 
 export const handleMessage = async (message) => {
   if (message.role !== 'user') {
@@ -18,7 +19,6 @@ export const handleMessage = async (message) => {
       try {
         const input = match[1] ?? undefined
 
-        // Validate input if schema exists
         if (
           tool.inputSchema &&
           tool.inputSchema._def.typeName !== 'ZodUndefined'
@@ -27,8 +27,6 @@ export const handleMessage = async (message) => {
         }
 
         const output = await tool.handler(match)
-
-        // Validate output
         tool.outputSchema.parse(output)
 
         logToolUse({
@@ -62,9 +60,31 @@ export const handleMessage = async (message) => {
     }
   }
 
-  return {
-    role: 'assistant',
-    type: 'text',
-    content: 'The answer is 4',
+  // No tool matched — try planning with LLM
+  try {
+    const { tool: toolName, input } = await planTool(message.content)
+    const tool = toolRegistry.find((t) => t.name === toolName)
+    if (!tool) throw new Error(`Unknown tool: ${toolName}`)
+
+    tool.inputSchema.parse(input)
+    const output = await tool.handler([null, input])
+    tool.outputSchema.parse(output)
+
+    logToolUse({ tool: tool.name, input, output })
+
+    return {
+      role: 'assistant',
+      type: 'tool_use',
+      tool: tool.name,
+      input,
+      output,
+    }
+  } catch (err) {
+    logToolUse({ tool: 'planner', input: message.content, error: err.message })
+    return {
+      role: 'assistant',
+      type: 'text',
+      content: 'The answer is 4',
+    }
   }
 }
