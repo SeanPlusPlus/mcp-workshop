@@ -36,7 +36,7 @@ We’ll use:
 - `src/`
   - `index.js` — Entry point for the workshop
   - `messages/` — Simulated message handling and agent logic
-  - `tools/` — Mock external tools (e.g., calculator, search)
+  - `tools/` — Mock external tools (e.g., calculator, time)
   - `memory/` — Contextual storage/retrieval (TBD)
   - `schemas/` — Definitions for message formats (TBD)
   - `tracing/` — Logs structured tool usage to simulate MCP-style traceability
@@ -67,5 +67,7 @@ Continue adding tools and build a schema-driven message pipeline.
 - ✔️ Introduced MCP-style output with `{ role, type, tool, input, output }`
 - ✔️ Added structured logging in `src/tracing/trace.js` to trace tool usage with timestamps
 - ✔️ Renamed `logs/` to `tracing/` to avoid `.gitignore` conflicts
+- ✔️ Added a `time` tool that returns the current ISO timestamp
+- ✔️ `index.js` now runs multiple test prompts to exercise each tool + fallback response
 
-Next up: Add additional tools and evolve toward a message router + tool registry
+Next up: Add a third tool, introduce message schema validation, or create a dynamic tool registry
