@@ -5,6 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
+    "tools": "node scripts/listTools.js",
     "start": "node src/index.js",
     "lint": "eslint . --ext .js",
     "format": "prettier --write .",
