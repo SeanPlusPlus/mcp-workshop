@@ -6,6 +6,42 @@ Welcome to the **Model Context Protocol (MCP) Workshop**! This is a live, iterat
 
 Learn and build a conceptual prototype of the Model Context Protocol (MCP) using JavaScript. We’ll simulate how LLMs can interact with tools, external data sources, and memory through a structured protocol.
 
+## 📦 Versions
+
+### ✅ Version 1.0.0 (Locked)
+
+To check out the original minimal working prototype:
+
+```bash
+git checkout v1.0.0
+```
+
+Covered in v1:
+
+- Static regex-based tool detection
+- Dynamic tool registry (`registry.js`)
+- Tools: `calculator`, `time`, `diceRoll`
+- Zod-based schema validation for input/output
+- Structured tool invocation responses
+- CLI for listing tools: `npm run tools`
+- Logging and tracing of tool usage
+
+---
+
+### 🚧 Version 2.0.0 (In Progress)
+
+Current default branch (`main`) is tracking v2.
+
+Additions in v2:
+
+- 🧠 `planTool()` uses GPT-4 to route user prompts to tools
+- 🧪 `scripts/testPlanner.js` lets you try LLM-driven planning via `npm run plan`
+- 🧰 LLM fallback integrated into `handleMessage()` for unrecognized inputs
+
+Next up: multi-step planning, memory, and agent replies post-tool execution.
+
+---
+
 ## 📚 What is MCP?
 
 MCP (Model Context Protocol) is an open standard introduced by Anthropic in November 2024. It provides a structured way for LLMs to:
@@ -67,14 +103,6 @@ To test LLM tool planning:
 ```bash
 npm run plan
 ```
-
-## 📌 v2 In Progress
-
-We’ve begun layering in OpenAI-driven planning to replace regex matching:
-
-- Fallback to GPT-4 when no match is found
-- Tool planning happens via `planTool()` in `src/llm`
-- Tool cards still handle validation and execution
 
 ---
 
