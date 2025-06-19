@@ -127,4 +127,4 @@ npm run plan
 - ✔️ Final response generation using GPT-4 (`finalReply.js`)
 - ✔️ Full loop: **LLM → tool → LLM**
 
-Next up: explore memory, multi-step chains, and agent reasoning paths.
+Next up: explore memory, multi-step chains, and agent reasoning paths
