@@ -16,7 +16,20 @@ export const handleMessage = async (message) => {
     const match = tool.match(message.content)
     if (match) {
       try {
+        const input = match[1] ?? undefined
+
+        // Validate input if schema exists
+        if (
+          tool.inputSchema &&
+          tool.inputSchema._def.typeName !== 'ZodUndefined'
+        ) {
+          tool.inputSchema.parse(input)
+        }
+
         const output = await tool.handler(match)
+
+        // Validate output
+        tool.outputSchema.parse(output)
 
         logToolUse({
           tool: tool.name,
