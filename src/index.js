@@ -19,6 +19,10 @@ const messages = [
     role: 'user',
     content: 'Tell me something else',
   },
+  {
+    role: 'user',
+    content: 'What is 2 ++ 2?',
+  },
 ]
 
 const main = async () => {

@@ -29,8 +29,8 @@ We’ll use:
 
 - JavaScript (Node.js)
 - JSON for message structure
-- Simple local mocks for tools and memory
 - Zod for schema validation
+- Simple local mocks for tools and memory
 
 ## 🧩 Structure
 
@@ -60,7 +60,7 @@ npm run tools
 
 ## 📌 Next Step
 
-Add input/output schema validation to each tool card using Zod.
+Wrap up the core loop and explore dynamic planning, tool metadata expansion, or agent memory.
 
 ---
 
@@ -78,8 +78,4 @@ Add input/output schema validation to each tool card using Zod.
 - ✔️ Introduced a dynamic `toolRegistry` in `src/tools/registry.js`
 - ✔️ Refactored `handleMessage()` to detect and invoke tools through the registry
 - ✔️ Added a `diceRoll` tool that simulates rolling a 6-sided die
-- ✔️ Updated `index.js` to run a test message for each tool (calculator, time, dice, fallback)
-- ✔️ Converted all tools into full MCP-style tool cards with metadata and schema descriptions
-- ✔️ Created `scripts/listTools.js` and CLI command `npm run tools` to list all available tools
-
-Next up: Use Zod to enforce `inputSchema` and `outputSchema` validation in each tool card
+- ✔️ Updated `index.js` to
