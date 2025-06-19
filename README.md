@@ -115,16 +115,35 @@ npm run plan
 
 ---
 
-## ✅ Progress So Far
+## 🧾 Milestones and Feature Summary
 
-- ✔️ Created initial `README.md`
-- ✔️ Set up ESLint and Prettier for 2-space indentation and no semicolons
-- ✔️ Built regex-matching tool agent with structured logging
-- ✔️ Built MCP-style tool cards with Zod input/output schemas
-- ✔️ CLI interface for listing tools and testing inputs
-- ✔️ Introduced LLM planner using GPT-4 (`planTool.js`)
-- ✔️ Tool fallback routing to planner when regex fails
-- ✔️ Final response generation using GPT-4 (`finalReply.js`)
-- ✔️ Full loop: **LLM → tool → LLM**
+### 🛠 v1.0.0 Foundation
 
-Next up: explore memory, multi-step chains, and agent reasoning paths
+- ✅ Created `README.md`
+- ✅ Set up ESLint and Prettier (2-space, no semicolons, format-on-save)
+- ✅ Built initial tool invocation system using regex-based matching
+- ✅ Designed dynamic `toolRegistry.js` with `name`, `match`, `handler`
+- ✅ Built first tools: `calculator`, `time`, `diceRoll`
+- ✅ Added CLI tool list: `npm run tools`
+- ✅ Added tool logging via `trace.js`
+- ✅ Introduced Zod validation for input/output schemas
+- ✅ Refactored `handleMessage()` to invoke tools via registry
+- ✅ CLI-driven test suite via `index.js` messages
+- ✅ Tagged and released as `v1.0.0`
+
+### 🤖 v2.0.0 Agent Upgrade
+
+- ✅ Introduced GPT-4-based planner: `planTool.js`
+- ✅ Created CLI script: `npm run plan` to test LLM tool routing
+- ✅ Fallback to LLM planning in `handleMessage()` when no tool matches
+- ✅ Created `finalReply.js` to turn tool result into natural language
+- ✅ Completed full loop: **LLM → tool → LLM reply**
+- ✅ Updated all messages to return human-facing responses from the model
+- ✅ Updated README, tagged and ready for `v2.0.0`
+
+### ⏭️ Next Ideas
+
+- Add memory context or conversation history
+- Support multiple tool calls in a single turn
+- Use system-level planning instructions
+- Make planner LLM aware of prior tool results or facts
