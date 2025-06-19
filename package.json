@@ -5,15 +5,16 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "tools": "node scripts/listTools.js",
     "start": "node src/index.js",
+    "tools": "node scripts/listTools.js",
+    "plan": "node scripts/testPlanner.js",
     "lint": "eslint . --ext .js",
     "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
@@ -21,8 +22,8 @@
     "prettier": "^3.5.3"
   },
   "dependencies": {
-    "dotenv": "^16.5.0",
-    "openai": "^5.5.1",
-    "zod": "^3.25.67"
+    "dotenv": "^16.4.5",
+    "openai": "^4.33.1",
+    "zod": "^3.22.4"
   }
 }
