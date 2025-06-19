@@ -78,4 +78,10 @@ Wrap up the core loop and explore dynamic planning, tool metadata expansion, or 
 - ✔️ Introduced a dynamic `toolRegistry` in `src/tools/registry.js`
 - ✔️ Refactored `handleMessage()` to detect and invoke tools through the registry
 - ✔️ Added a `diceRoll` tool that simulates rolling a 6-sided die
-- ✔️ Updated `index.js` to
+- ✔️ Updated `index.js` to run a test message for each tool (calculator, time, dice, fallback)
+- ✔️ Converted all tools into full MCP-style tool cards with metadata and schema definitions
+- ✔️ Created `scripts/listTools.js` and CLI command `npm run tools` to list all available tools
+- ✔️ Installed and integrated `zod` to define and enforce `inputSchema` and `outputSchema` in each tool
+- ✔️ Updated `handleMessage()` to validate tool inputs and outputs with Zod
+
+Next up: Expand planning logic, build agent memory, or add docs auto-generation
