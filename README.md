@@ -36,7 +36,7 @@ We’ll use:
 - `src/`
   - `index.js` — Entry point for the workshop
   - `messages/` — Simulated message handling and agent logic
-  - `tools/` — Mock external tools (e.g., calculator, time, registry)
+  - `tools/` — Mock external tools (e.g., calculator, time, dice, registry)
   - `memory/` — Contextual storage/retrieval (TBD)
   - `schemas/` — Definitions for message formats (TBD)
   - `tracing/` — Logs structured tool usage to simulate MCP-style traceability
@@ -68,8 +68,9 @@ Continue adding tools and build a schema-driven message pipeline.
 - ✔️ Added structured logging in `src/tracing/trace.js` to trace tool usage with timestamps
 - ✔️ Renamed `logs/` to `tracing/` to avoid `.gitignore` conflicts
 - ✔️ Added a `time` tool that returns the current ISO timestamp
-- ✔️ `index.js` now runs multiple test prompts to exercise each tool + fallback response
 - ✔️ Introduced a dynamic `toolRegistry` in `src/tools/registry.js`
 - ✔️ Refactored `handleMessage()` to detect and invoke tools through the registry
+- ✔️ Added a `diceRoll` tool that simulates rolling a 6-sided die
+- ✔️ Updated `index.js` to run a test message for each tool (calculator, time, dice, fallback)
 
-Next up: Add more tools, enrich tool metadata, or enforce schemas using something like Zod
+Next up: Enrich tools with metadata, implement input/output schemas using Zod, or explore agent memory
