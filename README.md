@@ -1,5 +1,7 @@
 # MCP WORKSHOP
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/SeanPlusPlus/mcp-workshop?label=release)
+
 Welcome to the **Model Context Protocol (MCP) Workshop**! This is a live, iterative tutorial between me (Sean) and ChatGPT — building understanding from first principles and implementing a conceptual prototype in JavaScript step by step.
 
 ## 🚀 Goal
@@ -7,6 +9,8 @@ Welcome to the **Model Context Protocol (MCP) Workshop**! This is a live, iterat
 Learn and build a conceptual prototype of the Model Context Protocol (MCP) using JavaScript. We’ll simulate how LLMs can interact with tools, external data sources, and memory through a structured protocol.
 
 ## 📦 Versions
+
+👉 [View latest GitHub release](https://github.com/SeanPlusPlus/mcp-workshop/releases/latest)
 
 ### ✅ Version 1.0.0 (Locked)
 
