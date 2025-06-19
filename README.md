@@ -35,10 +35,11 @@ We’ll use:
 
 - `src/`
   - `index.js` — Entry point for the workshop
-  - `messages/` — Simulated messages and schemas
+  - `messages/` — Simulated message handling and agent logic
   - `tools/` — Mock external tools (e.g., calculator, search)
-  - `memory/` — Contextual storage/retrieval
-  - `schemas/` — Definitions for message formats
+  - `memory/` — Contextual storage/retrieval (TBD)
+  - `schemas/` — Definitions for message formats (TBD)
+  - `tracing/` — Logs structured tool usage to simulate MCP-style traceability
 - `README.md` — This file
 
 ## 🏁 How to Start
@@ -52,7 +53,7 @@ You’ll walk through a series of interactive steps to simulate an LLM handling 
 
 ## 📌 Next Step
 
-Start with a minimal `index.js` that loads a basic message and responds with a fixed response. We’ll iterate from there.
+Continue adding tools and build a schema-driven message pipeline.
 
 ---
 
@@ -61,7 +62,10 @@ Start with a minimal `index.js` that loads a basic message and responds with a f
 - ✔️ Created initial `README.md`
 - ✔️ Set up ESLint and Prettier for 2-space indentation and no semicolons
 - ✔️ Added a basic `index.js` file that simulates an LLM responding to a user prompt
-- ✔️ Created `handleMessage()` to return a hardcoded response to a user's message
-- ✔️ Cleaned up Node.js module warnings by specifying `"type": "module"` in `package.json`
+- ✔️ Created `handleMessage()` to return structured tool usage or fallback text
+- ✔️ Implemented a basic calculator tool using `eval()` with guardrails
+- ✔️ Introduced MCP-style output with `{ role, type, tool, input, output }`
+- ✔️ Added structured logging in `src/tracing/trace.js` to trace tool usage with timestamps
+- ✔️ Renamed `logs/` to `tracing/` to avoid `.gitignore` conflicts
 
-Next up: add a calculator tool for evaluating expressions like `2 + 2`
+Next up: Add additional tools and evolve toward a message router + tool registry

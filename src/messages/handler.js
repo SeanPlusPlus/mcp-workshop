@@ -1,6 +1,7 @@
 // src/messages/handler.js
 
 import { evaluate } from '../tools/calculator.js'
+import { logToolUse } from '../tracing/trace.js'
 
 export const handleMessage = async (message) => {
   if (message.role === 'user') {
@@ -10,6 +11,13 @@ export const handleMessage = async (message) => {
       const expression = mathMatch[1]
       try {
         const result = evaluate(expression)
+
+        logToolUse({
+          tool: 'calculator',
+          input: expression,
+          output: result,
+        })
+
         return {
           role: 'assistant',
           type: 'tool_use',
@@ -18,6 +26,12 @@ export const handleMessage = async (message) => {
           output: result,
         }
       } catch (err) {
+        logToolUse({
+          tool: 'calculator',
+          input: expression,
+          error: 'Failed to evaluate expression',
+        })
+
         return {
           role: 'assistant',
           type: 'tool_use',
