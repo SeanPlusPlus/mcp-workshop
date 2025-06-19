@@ -12,24 +12,32 @@ export const handleMessage = async (message) => {
         const result = evaluate(expression)
         return {
           role: 'assistant',
-          content: `The answer is ${result}`,
+          type: 'tool_use',
+          tool: 'calculator',
+          input: expression,
+          output: result,
         }
       } catch (err) {
         return {
           role: 'assistant',
-          content: "Sorry, I couldn't evaluate that expression.",
+          type: 'tool_use',
+          tool: 'calculator',
+          input: expression,
+          error: 'Failed to evaluate expression',
         }
       }
     }
 
     return {
       role: 'assistant',
+      type: 'text',
       content: 'The answer is 4',
     }
   }
 
   return {
     role: 'assistant',
+    type: 'text',
     content: 'I can only respond to user messages right now.',
   }
 }
