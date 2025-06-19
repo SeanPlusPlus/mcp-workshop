@@ -4,7 +4,7 @@ import { handleMessage } from './messages/handler.js'
 
 const userMessage = {
   role: 'user',
-  content: 'What is 2 + 2?',
+  content: 'What is 7 * 8?',
 }
 
 const main = async () => {
