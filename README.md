@@ -30,6 +30,7 @@ We’ll use:
 - JavaScript (Node.js)
 - JSON for message structure
 - Simple local mocks for tools and memory
+- Zod for schema validation
 
 ## 🧩 Structure
 
@@ -40,6 +41,8 @@ We’ll use:
   - `memory/` — Contextual storage/retrieval (TBD)
   - `schemas/` — Definitions for message formats (TBD)
   - `tracing/` — Logs structured tool usage to simulate MCP-style traceability
+- `scripts/`
+  - `listTools.js` — Lists available tool cards
 - `README.md` — This file
 
 ## 🏁 How to Start
@@ -49,11 +52,15 @@ npm install
 npm start
 ```
 
-You’ll walk through a series of interactive steps to simulate an LLM handling a request, querying tools, and returning a structured response.
+To list available tools:
+
+```bash
+npm run tools
+```
 
 ## 📌 Next Step
 
-Continue adding tools and build a schema-driven message pipeline.
+Add input/output schema validation to each tool card using Zod.
 
 ---
 
@@ -72,5 +79,7 @@ Continue adding tools and build a schema-driven message pipeline.
 - ✔️ Refactored `handleMessage()` to detect and invoke tools through the registry
 - ✔️ Added a `diceRoll` tool that simulates rolling a 6-sided die
 - ✔️ Updated `index.js` to run a test message for each tool (calculator, time, dice, fallback)
+- ✔️ Converted all tools into full MCP-style tool cards with metadata and schema descriptions
+- ✔️ Created `scripts/listTools.js` and CLI command `npm run tools` to list all available tools
 
-Next up: Enrich tools with metadata, implement input/output schemas using Zod, or explore agent memory
+Next up: Use Zod to enforce `inputSchema` and `outputSchema` validation in each tool card
