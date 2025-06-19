@@ -13,6 +13,10 @@ const messages = [
   },
   {
     role: 'user',
+    content: 'Roll a die',
+  },
+  {
+    role: 'user',
     content: 'Tell me something else',
   },
 ]

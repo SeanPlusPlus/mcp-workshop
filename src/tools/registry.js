@@ -2,6 +2,7 @@
 
 import { evaluate } from './calculator.js'
 import { getCurrentTime } from './time.js'
+import { rollDie } from './dice.js'
 
 export const toolRegistry = [
   {
@@ -13,5 +14,10 @@ export const toolRegistry = [
     name: 'time',
     match: (content) => /what\s+time\s+is\s+it\??/i.test(content),
     handler: () => getCurrentTime(),
+  },
+  {
+    name: 'diceRoll',
+    match: (content) => /roll\s+(a|one)?\s*(die|dice)/i.test(content),
+    handler: () => rollDie(),
   },
 ]
