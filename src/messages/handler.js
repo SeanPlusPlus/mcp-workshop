@@ -1,7 +1,6 @@
 // src/messages/handler.js
 
-import { evaluate } from '../tools/calculator.js'
-import { getCurrentTime } from '../tools/time.js'
+import { toolRegistry } from '../tools/registry.js'
 import { logToolUse } from '../tracing/trace.js'
 
 export const handleMessage = async (message) => {
@@ -13,64 +12,43 @@ export const handleMessage = async (message) => {
     }
   }
 
-  // Check for math expression
-  const mathMatch = message.content.match(/(\d+[\s]*[+\-*/][\s]*\d+)/)
-  if (mathMatch) {
-    const expression = mathMatch[1]
-    try {
-      const result = evaluate(expression)
+  for (const tool of toolRegistry) {
+    const match = tool.match(message.content)
+    if (match) {
+      try {
+        const output = await tool.handler(match)
 
-      logToolUse({
-        tool: 'calculator',
-        input: expression,
-        output: result,
-      })
+        logToolUse({
+          tool: tool.name,
+          input: message.content,
+          output,
+        })
 
-      return {
-        role: 'assistant',
-        type: 'tool_use',
-        tool: 'calculator',
-        input: expression,
-        output: result,
-      }
-    } catch (err) {
-      logToolUse({
-        tool: 'calculator',
-        input: expression,
-        error: 'Failed to evaluate expression',
-      })
+        return {
+          role: 'assistant',
+          type: 'tool_use',
+          tool: tool.name,
+          input: message.content,
+          output,
+        }
+      } catch (err) {
+        logToolUse({
+          tool: tool.name,
+          input: message.content,
+          error: err.message || 'Unknown error',
+        })
 
-      return {
-        role: 'assistant',
-        type: 'tool_use',
-        tool: 'calculator',
-        input: expression,
-        error: 'Failed to evaluate expression',
+        return {
+          role: 'assistant',
+          type: 'tool_use',
+          tool: tool.name,
+          input: message.content,
+          error: 'Tool invocation failed',
+        }
       }
     }
   }
 
-  // Check for time request
-  const timeMatch = /what\s+time\s+is\s+it\??/i.test(message.content)
-  if (timeMatch) {
-    const result = getCurrentTime()
-
-    logToolUse({
-      tool: 'time',
-      input: 'current time',
-      output: result,
-    })
-
-    return {
-      role: 'assistant',
-      type: 'tool_use',
-      tool: 'time',
-      input: 'current time',
-      output: result,
-    }
-  }
-
-  // Default fallback response
   return {
     role: 'assistant',
     type: 'text',
