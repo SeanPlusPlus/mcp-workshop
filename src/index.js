@@ -5,23 +5,7 @@ import { handleMessage } from './messages/handler.js'
 const messages = [
   {
     role: 'user',
-    content: 'What is 6 * 7?',
-  },
-  {
-    role: 'user',
-    content: 'What time is it?',
-  },
-  {
-    role: 'user',
-    content: 'Roll a die',
-  },
-  {
-    role: 'user',
-    content: 'Tell me something else',
-  },
-  {
-    role: 'user',
-    content: 'What is 2 ++ 2?',
+    content: 'What is 72 divided by 9?',
   },
 ]
 
