@@ -1,12 +1,12 @@
-MCP WORKSHOP
+# MCP WORKSHOP
 
-Welcome to the Model Context Protocol (MCP) Workshop! This workshop is designed to help you understand the MCP from first principles and build a working understanding by implementing the core ideas in JavaScript.
+Welcome to the **Model Context Protocol (MCP) Workshop**! This workshop is designed to help you understand the MCP from first principles and build a working understanding by implementing the core ideas in JavaScript.
 
-🚀 Goal
+## 🚀 Goal
 
 Learn and build a conceptual prototype of the Model Context Protocol (MCP) using JavaScript. We’ll simulate how LLMs can interact with tools, external data sources, and memory through a structured protocol.
 
-📚 What is MCP?
+## 📚 What is MCP?
 
 MCP (Model Context Protocol) is an open standard introduced by Anthropic in November 2024. It provides a structured way for LLMs to:
 
@@ -15,7 +15,7 @@ MCP (Model Context Protocol) is an open standard introduced by Anthropic in Nove
 - Compose workflows involving multiple steps
 - Maintain a consistent schema for structured communication
 
-🧠 Key Concepts We’ll Explore
+## 🧠 Key Concepts We’ll Explore
 
 - Messages and structured communication
 - Tool use and invocation
@@ -23,7 +23,7 @@ MCP (Model Context Protocol) is an open standard introduced by Anthropic in Nove
 - Schema design
 - Simulated agents and tool responses
 
-🛠 Stack
+## 🛠 Stack
 
 We’ll use:
 
@@ -31,26 +31,37 @@ We’ll use:
 - JSON for message structure
 - Simple local mocks for tools and memory
 
-🧩 Structure
+## 🧩 Structure
 
-- src/
-- index.js — Entry point for the workshop
-- messages/ — Simulated messages and schemas
-- tools/ — Mock external tools (e.g., calculator, search)
-- memory/ — Contextual storage/retrieval
-- schemas/ — Definitions for message formats
-- README.md — This file
+- `src/`
+  - `index.js` — Entry point for the workshop
+  - `messages/` — Simulated messages and schemas
+  - `tools/` — Mock external tools (e.g., calculator, search)
+  - `memory/` — Contextual storage/retrieval
+  - `schemas/` — Definitions for message formats
+- `README.md` — This file
 
-🏁 How to Start
+## 🏁 How to Start
 
-```
+```bash
 npm install
+npm start
 ```
 
 You’ll walk through a series of interactive steps to simulate an LLM handling a request, querying tools, and returning a structured response.
 
-📌 Next Step
+## 📌 Next Step
 
-Start with a minimal index.js that loads a basic message and responds with a fixed response. We’ll iterate from there.
+Start with a minimal `index.js` that loads a basic message and responds with a fixed response. We’ll iterate from there.
 
-Let’s go!
+---
+
+## ✅ Progress So Far
+
+- ✔️ Created initial `README.md`
+- ✔️ Set up ESLint and Prettier for 2-space indentation and no semicolons
+- ✔️ Added a basic `index.js` file that simulates an LLM responding to a user prompt
+- ✔️ Created `handleMessage()` to return a hardcoded response to a user's message
+- ✔️ Cleaned up Node.js module warnings by specifying `"type": "module"` in `package.json`
+
+Next up: add a calculator tool for evaluating expressions like `2 + 2`
