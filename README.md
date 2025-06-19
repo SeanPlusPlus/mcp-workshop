@@ -1,6 +1,6 @@
 # MCP WORKSHOP
 
-Welcome to the **Model Context Protocol (MCP) Workshop**! This workshop is designed to help you understand the MCP from first principles and build a working understanding by implementing the core ideas in JavaScript.
+Welcome to the **Model Context Protocol (MCP) Workshop**! This is a live, iterative tutorial between me (Sean) and ChatGPT — building understanding from first principles and implementing a conceptual prototype in JavaScript step by step.
 
 ## 🚀 Goal
 
