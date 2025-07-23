@@ -32,9 +32,9 @@ Covered in v1:
 
 ---
 
-### ✅ Version 2.0.0 (Latest)
+### ✅ Version 2.0.0
 
-To use the latest version:
+To explore v2:
 
 ```bash
 git checkout main
@@ -52,6 +52,23 @@ Added in v2:
 
 v2 completes the full reasoning loop:  
 **LLM → tool → LLM**
+
+---
+
+### ✅ Version 3.0.0
+
+```bash
+git checkout main
+npm install
+npm run agent
+```
+
+New in v3:
+
+- Introduced mcp-agent.js, the core LLM → Tool → Output runner
+- Automatically plans which tool to use via GPT-4
+- Invokes and validates tool output using Zod
+- Script name: `npm run agent`
 
 ---
 
