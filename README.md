@@ -37,9 +37,7 @@ Covered in v1:
 To explore v2:
 
 ```bash
-git checkout main
-npm install
-npm start
+git checkout v2.0.0
 ```
 
 Added in v2:
