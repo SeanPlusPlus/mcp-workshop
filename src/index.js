@@ -11,9 +11,9 @@ const messages = [
 
 const main = async () => {
   for (const message of messages) {
+    console.log('[USER]', message.content)
     const response = await handleMessage(message)
-    console.log('\nUser:', message.content)
-    console.log('LLM Response:', response)
+    console.log('[LLM Response]', response)
   }
 }
 
