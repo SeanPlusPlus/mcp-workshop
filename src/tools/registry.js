@@ -18,8 +18,8 @@ export const toolRegistry = [
     name: 'time',
     description: 'Returns the current time in Pacific Time (PST/PDT).',
     match: (content) => /what\s+time\s+is\s+it\??/i.test(content),
-    inputSchema: z.undefined(),
-    outputSchema: z.string(), // <- changed from z.string().datetime()
+    inputSchema: z.string().optional(), // ← fix here
+    outputSchema: z.string(),
     handler: () => getCurrentTime(),
   },
   {
