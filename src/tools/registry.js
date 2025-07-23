@@ -16,10 +16,10 @@ export const toolRegistry = [
   },
   {
     name: 'time',
-    description: 'Returns the current time in ISO 8601 format.',
+    description: 'Returns the current time in Pacific Time (PST/PDT).',
     match: (content) => /what\s+time\s+is\s+it\??/i.test(content),
     inputSchema: z.undefined(),
-    outputSchema: z.string().datetime(),
+    outputSchema: z.string(), // <- changed from z.string().datetime()
     handler: () => getCurrentTime(),
   },
   {
